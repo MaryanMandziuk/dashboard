@@ -22,6 +22,7 @@ import com.vaadin.server.Responsive;
 import com.vaadin.ui.*;
 import com.byteowls.vaadin.chartjs.ChartJs;
 import com.vaadin.ui.themes.ValoTheme;
+import com.vaadin.demo.dashboard.component.ChartUtils;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -224,8 +225,8 @@ public class ChartsView extends Panel implements View {
         });
 
 
-//        chart.setWidth(100, Unit.PERCENTAGE);
-        chart.setSizeFull();
+        chart.setWidth(100, Unit.PERCENTAGE);
+//        chart.setSizeFull();
         return chart;
     }
 
@@ -269,8 +270,8 @@ public class ChartsView extends Panel implements View {
             BarDataset dataset = (BarDataset) config.data().getDatasets().get(a);
             ChartUtils.notification(a, b, dataset);
         });
-//        chart.setWidth(100, Unit.PERCENTAGE);
-        chart.setSizeFull();
+        chart.setWidth(100, Unit.PERCENTAGE);
+//        chart.setSizeFull();
         return chart;
     }
 
@@ -303,6 +304,7 @@ public class ChartsView extends Panel implements View {
                 if (!slot.getStyleName().contains("max")) {
                     selectedItem.setIcon(FontAwesome.COMPRESS);
                     toggleMaximized(slot, true);
+                    content.setSizeFull();
                 } else {
                     slot.removeStyleName("max");
                     selectedItem.setIcon(FontAwesome.EXPAND);

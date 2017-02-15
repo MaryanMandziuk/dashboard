@@ -6,9 +6,7 @@ import java.util.Iterator;
 
 import com.vaadin.data.Property.ValueChangeEvent;
 import com.vaadin.data.Property.ValueChangeListener;
-import com.vaadin.demo.dashboard.component.InlineTextEditor;
-import com.vaadin.demo.dashboard.component.TopTenMoviesTable;
-import com.vaadin.demo.dashboard.component.TransactionsListing;
+import com.vaadin.demo.dashboard.component.*;
 import com.vaadin.demo.dashboard.domain.Transaction;
 import com.vaadin.event.LayoutEvents.LayoutClickEvent;
 import com.vaadin.event.LayoutEvents.LayoutClickListener;
@@ -69,7 +67,9 @@ public final class ReportEditor extends VerticalLayout {
 
         paletteLayout.addComponent(buildPaletteItem(PaletteItemType.TEXT));
         paletteLayout.addComponent(buildPaletteItem(PaletteItemType.TABLE));
-        paletteLayout.addComponent(buildPaletteItem(PaletteItemType.CHART));
+        paletteLayout.addComponent(buildPaletteItem(PaletteItemType.PIE_CHART));
+        paletteLayout.addComponent(buildPaletteItem(PaletteItemType.BUBBLE_CHART));
+        paletteLayout.addComponent(buildPaletteItem(PaletteItemType.SCATTER_LINE_CHART));
 
         paletteLayout.addLayoutClickListener(new LayoutClickListener() {
             @Override
@@ -184,6 +184,12 @@ public final class ReportEditor extends VerticalLayout {
                                 : null);
             } else if (type == PaletteItemType.TABLE) {
                 result = new TopTenMoviesTable();
+            } else if (type == PaletteItemType.PIE_CHART) {
+                result = new PieChart();
+            } else if (type == PaletteItemType.BUBBLE_CHART) {
+                result = new BubbleChart();
+            } else if (type == PaletteItemType.SCATTER_LINE_CHART) {
+                result = new ScatterLineChart();
             } else if (type == PaletteItemType.TRANSACTIONS) {
                 result = new TransactionsListing(
                         (Collection<Transaction>) prefillData);
@@ -302,8 +308,10 @@ public final class ReportEditor extends VerticalLayout {
 
     public enum PaletteItemType {
         TEXT("Text Block", FontAwesome.FONT), TABLE("Top 10 Movies",
-                FontAwesome.TABLE), CHART("Top 6 Revenue",
-                FontAwesome.BAR_CHART_O), TRANSACTIONS("Latest transactions",
+                FontAwesome.TABLE), PIE_CHART("Top 6 Revenue",
+                FontAwesome.BAR_CHART_O), BUBBLE_CHART("Some bubbles",
+                FontAwesome.SUN_O), SCATTER_LINE_CHART("Some scatter line",
+                FontAwesome.LINE_CHART), TRANSACTIONS("Latest transactions",
                 null);
 
         private final String title;
