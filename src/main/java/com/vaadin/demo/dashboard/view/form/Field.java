@@ -3,6 +3,7 @@ package com.vaadin.demo.dashboard.view.form;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,24 +22,23 @@ public class Field extends HorizontalLayout {
         comp.setWidth("90%");
         setMargin(true);
         Label label = new Label(id);
-        label.setWidth("100%");
+        label.setWidth("200px");
 
-
-        Label icon = new Label(
-                FontAwesome.QUESTION_CIRCLE.getHtml(),
-                ContentMode.HTML);
-        icon.setWidth("100%");
+        Button button = new Button();
+        button.setStyleName(ValoTheme.BUTTON_LINK);
+        button.setIcon(FontAwesome.QUESTION_CIRCLE);
 
 
         addComponent(label);
         setComponentAlignment(label, Alignment.TOP_CENTER);
         addComponent(comp);
+        addComponent(button);
+        button.addClickListener(e -> button.setCaption("Help message!"));
 
-        addComponent(icon);
-        setComponentAlignment(icon, Alignment.TOP_LEFT);
-        setExpandRatio(label, 2.0f   );
+        setComponentAlignment(button, Alignment.TOP_LEFT);
+
         setExpandRatio(comp, 4.0f   );
-        setExpandRatio(icon, 1.0f   );
+        setExpandRatio(button, 1.0f   );
 
     }
 

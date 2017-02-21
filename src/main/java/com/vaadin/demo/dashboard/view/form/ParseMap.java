@@ -1,13 +1,10 @@
 package com.vaadin.demo.dashboard.view.form;
 
-import com.vaadin.server.Responsive;
 import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
-
 /**
  * Created by maryan on 18.02.17.
  */
-public class ParseMap extends VerticalLayout{
+public class ParseMap extends VerticalLayout {
 
     public ParseMap(final String map) {
         setSizeFull();
