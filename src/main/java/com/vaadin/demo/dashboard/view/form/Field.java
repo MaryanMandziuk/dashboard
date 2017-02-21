@@ -22,23 +22,35 @@ public class Field extends HorizontalLayout {
         comp.setWidth("90%");
         setMargin(true);
         Label label = new Label(id);
-        label.setWidth("200px");
+        label.setWidth("150px");
 
         Button button = new Button();
         button.setStyleName(ValoTheme.BUTTON_LINK);
         button.setIcon(FontAwesome.QUESTION_CIRCLE);
 
 
+        Label help = new Label();
+
         addComponent(label);
         setComponentAlignment(label, Alignment.TOP_CENTER);
         addComponent(comp);
         addComponent(button);
-        button.addClickListener(e -> button.setCaption("Help message!"));
+        addComponent(help);
+        setComponentAlignment(help, Alignment.TOP_LEFT);
+        button.addClickListener((Button.ClickEvent event) -> {
+            String message = "Help message! Some help.";
+            if(help.getValue().equals(message)) {
+                help.setValue("");
+            } else {
+                help.setValue(message);
+            }
+        });
 
         setComponentAlignment(button, Alignment.TOP_LEFT);
 
-        setExpandRatio(comp, 4.0f   );
+        setExpandRatio(comp, 5.0f   );
         setExpandRatio(button, 1.0f   );
+        setExpandRatio(help, 1.0f   );
 
     }
 

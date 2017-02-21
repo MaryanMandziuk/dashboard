@@ -17,7 +17,7 @@ public class FormView extends Panel implements View {
         setSizeFull();
 
 
-        String map = "name:text:default name\n" +
+        String map = "name very very very very very very long:text:default name\n" +
                     "description:textarea:default description\n" +
                     "date:date:24.05.2017\n" +
                     "options:combo:val1,val2,val3\n";
